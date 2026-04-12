@@ -223,7 +223,7 @@ const FlightSearch = () => {
                     : query.origin
                 }
                 onChange={handleChange}
-                className="search-input "
+                className="search-input"
                 required
               />
 

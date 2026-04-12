@@ -1045,14 +1045,14 @@ html {
   font-size: 1rem;
   color: var(--color-charcoal);
   background: #fff;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  /* box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25); */
   outline: none;
   transition: box-shadow 0.2s;
 }
 .search-input:focus {
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.35),
-    0 0 0 3px var(--color-pumpkin);
+    /* 0 20px 60px rgba(0, 0, 0, 0.35), */
+    0 0 0 2px #fd812ea6;
 }
 .search-icon {
   position: absolute;

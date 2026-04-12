@@ -8,10 +8,17 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRevealAnimation } from "../animations/useRevealAnimation ";
 import { useStaggerReveal } from "../animations/useStaggerReveal";
+import SectionSkeleton from "../components/skeleton/SectionSkeleton";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { showError } from "../utils/toast";
 
 gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
   // ----- STATES -----
+  // const [loading, setLoading] = useState(true);
+  const [sectionLoading, setSectionLoading] = useState(false);
+  const [popularDestinations, setPopularDestinations] = useState([]);
+  const [offers, setOffers] = useState([]);
   const [originSuggestions, setOriginSuggestions] = useState([]);
   const [destinationSuggestions, setDestinationSuggestions] = useState([]);
   const [query, setQuery] = useState({
@@ -137,7 +144,48 @@ const Home = () => {
   useRevealAnimation(headingRef, { direction: "left", duration: 1.2 });
   useRevealAnimation(headingTopRef, { direction: "top", duration: 1.2 });
   useRevealAnimation(paraRef, { direction: "right", duration: 1.2 });
-  useRevealAnimation(imgRef, { direction: "bottom", duration: 1.2, opacity: 0 });
+  useRevealAnimation(imgRef, {
+    direction: "bottom",
+    duration: 1.2,
+    opacity: 0,
+  });
+
+  // === FETCH POPULAR DESTINATION ===
+  const fetchPopularDestinations = async () => {
+    try {
+      setSectionLoading(true);
+
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      setPopularDestinations(Popular);
+    } catch (err) {
+      showError("Fail to load Popupar Destinations");
+      console.error("Error loading popular destinations:", err);
+    } finally {
+      setSectionLoading(false);
+    }
+  };
+
+  // === FETCH DEALS ===
+  const FetchDeals = async () => {
+    try {
+      setSectionLoading(true);
+
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      setOffers(deals);
+    } catch (err) {
+      showError("Fail to load Deals ");
+      console.error("Error Loading Deals", err);
+    } finally {
+      setSectionLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchPopularDestinations();
+    FetchDeals();
+  }, []);
 
   const handleSearch = () => {
     if (!query.origin || !query.destination || !query.date) {
@@ -520,7 +568,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Popular Destinations Section */}
       <section>
         <div className="padding-x h-max my-10">
           <div className="mb-10">
@@ -554,6 +601,12 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/* {sectionLoading ? (
+        <SectionSkeleton type="card" count={3} />
+      ) : (
+      )} */}
+      {/* Popular Destinations Section */}
+      <section></section>
 
       {/* Comfort & Experience Section */}
       <section>
@@ -642,7 +695,10 @@ const Home = () => {
         <div className="padding-x py-4 sm:py-10">
           <div>
             <div className="mb-10">
-              <h1 ref={headingRef} className="text-charcoal text-4xl mb-1 tracking-wide">
+              <h1
+                ref={headingRef}
+                className="text-charcoal text-4xl mb-1 tracking-wide"
+              >
                 Why Choose SkyRoute
               </h1>
               <p ref={headingTopRef} className="text-base text-charcoal-100">
@@ -655,7 +711,11 @@ const Home = () => {
                 const Icon1 = feature.icon1;
                 const Icon2 = feature.icon2;
                 return (
-                  <div ref={addToRefs} key={key} className=" p-4 rounded-xl shadow-lg">
+                  <div
+                    ref={addToRefs}
+                    key={key}
+                    className=" p-4 rounded-xl shadow-lg"
+                  >
                     <div className="flex items-center gap-2 text-pumpkin">
                       <div className="bg-charcoal/10 p-2 rounded-full">
                         <Icon1 className="size-6 sm:size-10" />
@@ -683,89 +743,98 @@ const Home = () => {
       </section>
 
       {/* How It Works Section */}
-      <section>
-        <div className="padding-x py-4 sm:py-10">
-          <div>
-            <div className="text-center mb-10">
-              <h1 className="text-charcoal text-4xl  text-center uppercase">
-                How it Works
-              </h1>
-              <p className="text-xl text-charcoal-100 ">
-                Your journey starts with these simple steps
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 ">
-              {works.map((work, key) => (
-                <div
-                  key={key}
-                  className="flex flex-col items-center justify-center text-center py-6 px-8 rounded-xl shadow-lg relative "
-                >
-                  <div className="absolute top-20 -right-10 w-20 hidden lg:block">
-                    <img src={work.icon2} alt="" />
-                  </div>
-                  <div className="relative mb-2">
-                    <div className="w-30 p-6 rounded-full absolute top-7 left-8 text-pumpkin bg-[#f7f9fb] z-10">
-                      <img src={work.icon1} alt="" />
+      {sectionLoading ? (
+        <SectionSkeleton type="card" count={3} />
+      ) : (
+        <section>
+          <div className="padding-x py-4 sm:py-10">
+            <div>
+              <div className="text-center mb-10">
+                <h1 className="text-charcoal text-4xl  text-center uppercase">
+                  How it Works
+                </h1>
+                <p className="text-xl text-charcoal-100 ">
+                  Your journey starts with these simple steps
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 ">
+                {works.map((work, key) => (
+                  <div
+                    key={key}
+                    className="flex flex-col items-center justify-center text-center py-6 px-8 rounded-xl shadow-lg relative "
+                  >
+                    <div className="absolute top-20 -right-10 w-20 hidden lg:block">
+                      <img src={work.icon2} alt="" />
                     </div>
-                    <div className="size-45">
-                      <svg
-                        viewBox="0 0 32 32"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                      >
-                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                        <g
-                          id="SVGRepo_tracerCarrier"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        ></g>
-                        <g id="SVGRepo_iconCarrier">
-                          {" "}
-                          <path
-                            stroke="#f2f2f2"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M13.905 3.379A.5.5 0 0114.39 3h3.22a.5.5 0 01.485.379l.689 2.757a.515.515 0 00.341.362c.383.126.755.274 1.115.443a.515.515 0 00.449-.003l2.767-1.383a.5.5 0 01.577.093l2.319 2.319a.5.5 0 01.093.577l-1.383 2.767a.515.515 0 00-.003.449c.127.271.243.549.346.833.053.148.17.265.319.315l2.934.978a.5.5 0 01.342.474v3.28a.5.5 0 01-.342.474l-2.934.978a.515.515 0 00-.32.315 9.937 9.937 0 01-.345.833.515.515 0 00.003.449l1.383 2.767a.5.5 0 01-.093.577l-2.319 2.319a.5.5 0 01-.577.093l-2.767-1.383a.515.515 0 00-.449-.003c-.271.127-.549.243-.833.346a.515.515 0 00-.315.319l-.978 2.934a.5.5 0 01-.474.342h-3.28a.5.5 0 01-.474-.342l-.978-2.934a.515.515 0 00-.315-.32 9.95 9.95 0 01-1.101-.475.515.515 0 00-.498.014l-2.437 1.463a.5.5 0 01-.611-.075l-2.277-2.277a.5.5 0 01-.075-.61l1.463-2.438a.515.515 0 00.014-.498 9.938 9.938 0 01-.573-1.383.515.515 0 00-.362-.341l-2.757-.69A.5.5 0 013 17.61v-3.22a.5.5 0 01.379-.485l2.757-.689a.515.515 0 00.362-.341c.157-.478.35-.94.573-1.383a.515.515 0 00-.014-.498L5.594 8.557a.5.5 0 01.075-.611l2.277-2.277a.5.5 0 01.61-.075l2.438 1.463c.152.091.34.094.498.014a9.938 9.938 0 011.382-.573.515.515 0 00.342-.362l.69-2.757z"
-                          ></path>{" "}
-                          <circle
-                            cx="16"
-                            cy="16"
-                            r="5"
-                            stroke="#535358"
+                    <div className="relative mb-2">
+                      <div className="w-30 p-6 rounded-full absolute top-7 left-8 text-pumpkin bg-[#f7f9fb] z-10">
+                        <img src={work.icon1} alt="" />
+                      </div>
+                      <div className="size-45">
+                        <svg
+                          viewBox="0 0 32 32"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                        >
+                          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                          <g
+                            id="SVGRepo_tracerCarrier"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            strokeWidth="2"
-                          ></circle>{" "}
-                        </g>
-                      </svg>
+                          ></g>
+                          <g id="SVGRepo_iconCarrier">
+                            {" "}
+                            <path
+                              stroke="#f2f2f2"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M13.905 3.379A.5.5 0 0114.39 3h3.22a.5.5 0 01.485.379l.689 2.757a.515.515 0 00.341.362c.383.126.755.274 1.115.443a.515.515 0 00.449-.003l2.767-1.383a.5.5 0 01.577.093l2.319 2.319a.5.5 0 01.093.577l-1.383 2.767a.515.515 0 00-.003.449c.127.271.243.549.346.833.053.148.17.265.319.315l2.934.978a.5.5 0 01.342.474v3.28a.5.5 0 01-.342.474l-2.934.978a.515.515 0 00-.32.315 9.937 9.937 0 01-.345.833.515.515 0 00.003.449l1.383 2.767a.5.5 0 01-.093.577l-2.319 2.319a.5.5 0 01-.577.093l-2.767-1.383a.515.515 0 00-.449-.003c-.271.127-.549.243-.833.346a.515.515 0 00-.315.319l-.978 2.934a.5.5 0 01-.474.342h-3.28a.5.5 0 01-.474-.342l-.978-2.934a.515.515 0 00-.315-.32 9.95 9.95 0 01-1.101-.475.515.515 0 00-.498.014l-2.437 1.463a.5.5 0 01-.611-.075l-2.277-2.277a.5.5 0 01-.075-.61l1.463-2.438a.515.515 0 00.014-.498 9.938 9.938 0 01-.573-1.383.515.515 0 00-.362-.341l-2.757-.69A.5.5 0 013 17.61v-3.22a.5.5 0 01.379-.485l2.757-.689a.515.515 0 00.362-.341c.157-.478.35-.94.573-1.383a.515.515 0 00-.014-.498L5.594 8.557a.5.5 0 01.075-.611l2.277-2.277a.5.5 0 01.61-.075l2.438 1.463c.152.091.34.094.498.014a9.938 9.938 0 011.382-.573.515.515 0 00.342-.362l.69-2.757z"
+                            ></path>{" "}
+                            <circle
+                              cx="16"
+                              cy="16"
+                              r="5"
+                              stroke="#535358"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                            ></circle>{" "}
+                          </g>
+                        </svg>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex items-center justify-center gap-2 text-center mb-2">
+                        <h1 className="text-pumpkin text-6xl font-bold">
+                          {work.count}
+                        </h1>
+                        <h3 className="text-charcoal text-2xl font-bold tracking-wide">
+                          {work.title}
+                        </h3>
+                      </div>
+                      <p className="text-chrcoal-100 text-base flex-wrap ">
+                        {work.desc}
+                      </p>
                     </div>
                   </div>
-                  <div>
-                    <div className="flex items-center justify-center gap-2 text-center mb-2">
-                      <h1 className="text-pumpkin text-6xl font-bold">
-                        {work.count}
-                      </h1>
-                      <h3 className="text-charcoal text-2xl font-bold tracking-wide">
-                        {work.title}
-                      </h3>
-                    </div>
-                    <p className="text-chrcoal-100 text-base flex-wrap ">
-                      {work.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-
+        </section>
+      )}
       {/* Deals Sectiion */}
+      {/* {sectionLoading ? (
+        <SectionSkeleton type="list" count={3} />
+      ) : (
+      )} */}
       <section>
         <div className="padding-x py-4 sm:py-10 bg-creame">
           <div>
             <div className="mb-10">
-              <h1 ref={headingRef} className="text-4xl text-charcoal">Deals & Offers</h1>
+              <h1 ref={headingRef} className="text-4xl text-charcoal">
+                Deals & Offers
+              </h1>
               <p ref={headingTopRef} className="text-lg text-charcoal-100">
                 Unlock Exclusive Savings & Limited-Time Deals!
               </p>
@@ -774,7 +843,7 @@ const Home = () => {
             <div className="grid grid-cols-1 2xl:grid-cols-2 space-y-2 sm:space-y-8">
               {deals.map((deal, key) => (
                 <div
-                ref={addToRefs}
+                  ref={addToRefs}
                   key={key}
                   className="px-6 py-4  rounded-xl flex gap-4 md:flex-row md:max-h-100"
                 >
@@ -807,13 +876,17 @@ const Home = () => {
                       clipPath: "url(#customMiniShape2)",
                       WebkitClipPath: "url(#customMiniShape2)",
                     }}
-                  >
-                    <img
-                    // ref={cardRef}
-                      src={deal.image}
-                      className="rounded-3xl h-full w-full object-cover "
-                      alt={deal.title}
-                    />
+                    >
+                    {/* {sectionLoading && deal.image === null ? (
+                      <SectionSkeleton type="image" count={1} />
+                    ) : (
+                    )} */}
+                      <img
+                        loading="lazy"
+                        src={deal.image}
+                        className="rounded-3xl h-full w-full object-cover"
+                        alt={deal.title}
+                      />
                   </div>
                   <div className="">
                     <h1 className="text-xl sm:text-3xl text-charcoal">
@@ -845,7 +918,9 @@ const Home = () => {
         <div className="padding-x py-4 sm:py-10 ">
           <div>
             <div className="mb-10 text-center">
-              <h1 ref={headingRef} className="text-4xl text-charcoal">Testimonails & Reviews</h1>
+              <h1 ref={headingRef} className="text-4xl text-charcoal">
+                Testimonails & Reviews
+              </h1>
               <p ref={headingTopRef} className="text-lg text-charcoal-100">
                 Hear From Our Happy Customers!
               </p>
@@ -889,7 +964,7 @@ const Home = () => {
               </svg>
               {testimonials.map((review, key) => (
                 <div
-                ref={addToRefs}
+                  ref={addToRefs}
                   key={key}
                   className="py-4 px-6 text-center rounded-2xl flex justify-center items-center flex-col
                             bg-[url(https://media.istockphoto.com/id/1309531348/vector/white-hexagon-5.jpg?s=612x612&w=0&k=20&c=yfDPUlZQJlu4L_dy0lVMD0x7mpEe6jgp2EsdKstRY_k=)] bg-cover bg-no-repeat bg-center
@@ -900,7 +975,12 @@ const Home = () => {
                   }}
                 >
                   <div className="w-18 h-18  rounded-full overflow-hidden">
-                    <img className="w-full " src={review.image} alt="" loading="lazy" />
+                    <img
+                      className="w-full "
+                      src={review.image}
+                      alt=""
+                      loading="lazy"
+                    />
                   </div>
                   <h3 className="text-sm mt-2 text-charcoal-100">
                     -{review.name}

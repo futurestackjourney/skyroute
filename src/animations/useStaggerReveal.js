@@ -27,7 +27,7 @@ export const useStaggerReveal = (options = {}) => {
       autoAlpha: 1,
       y: 0,
       duration: options.duration || 1,
-      stagger: options.stagger || 0.3,
+      stagger: options.stagger || 0.5,
       ease: "power3.out",
       scrollTrigger: {
         trigger: refs.current[0].parentElement, // ✅ better trigger
