@@ -71,7 +71,7 @@ const Navbar = () => {
           {/* Dashboard Menu */}
           <div className="hidden md:block">
             <div className="flex items-center gap-10 text-charcoal font-semibold">
-              <div className="logo bg-linear-to-l from-orange-100 to bg-blue-200 text-Charcoal text-2xl font-semibold font-tech rounded-4xl py-2 px-4 flex items-center gap-2">
+              <div className="logo py-2 px-4 ">
                 <img src="/images/logo.png" width={100} alt="" />
               </div>
 
@@ -218,10 +218,10 @@ const Navbar = () => {
           {/* Mobile Menu */}
           <div className="block md:hidden w-full">
             {/* Top Bar */}
-            <div className="flex items-center justify-between w-full ">
+            <div className="flex items-center justify-between w-full py-2">
               {/* Logo */}
               <div
-                className={`logo bg-linear-to-l from-orange-100 to bg-blue-200 text-Charcoal text-lg md:text-2xl font-semibold font-tech rounded-4xl py-2 px-4 flex items-center gap-2 
+                className={`logo  
                 ${isOpen ? "opacity-0 invisible" : "opacity-100 visible"}
                 `}
               >
@@ -236,13 +236,13 @@ const Navbar = () => {
 
             {/* Drawer */}
             <div
-              className={`fixed top-0 right-0 h-full w-4/5 max-w-sm bg-creame z-50 shadow-xl
+              className={`fixed top-0 right-0 h-full w-4/5 max-w-sm bg-card z-50 shadow-xl
               transform transition-transform duration-300
               ${isOpen ? "translate-x-0 " : "translate-x-full"}`}
             >
               {/* Header */}
-              <div className="flex items-center justify-between p-4 border-b">
-                <span className="font-semibold text-lg">Menu</span>
+              <div className="flex items-center justify-between p-4 border-b border-gray-300">
+                <img src="/images/logo.png" width={100} alt="" />
 
                 <button onClick={() => setIsOpen(false)}>
                   <X size={28} />
@@ -250,35 +250,39 @@ const Navbar = () => {
               </div>
 
               {/* Links */}
-              <nav className="flex flex-col p-6 gap-5 text-lg font-medium">
-                <Link to="/" onClick={() => setIsOpen(false)}>
+              <nav className="flex flex-col gap-2 p-6 text-lg font-medium">
+                <Link className="hover:bg-pumpkin-100/10 p-2 rounded-lg" to="/" onClick={() => setIsOpen(false)}>
                   Home
                 </Link>
 
-                <Link to="/register" onClick={() => setIsOpen(false)}>
-                  Register
-                </Link>
 
-                <Link to="/search" onClick={() => setIsOpen(false)}>
+                <Link className="hover:bg-pumpkin-100/10 p-2 rounded-lg" to="/search" onClick={() => setIsOpen(false)}>
                   Flight Search
                 </Link>
 
-                <Link to="/about" onClick={() => setIsOpen(false)}>
+                <Link className="hover:bg-pumpkin-100/10 p-2 rounded-lg" to="/deals" onClick={() => setIsOpen(false)}>
+                  Deals
+                </Link>
+
+                <Link className="hover:bg-pumpkin-100/10 p-2 rounded-lg" to="/aboutUs" onClick={() => setIsOpen(false)}>
                   About Us
                 </Link>
 
-                <Link to="/support" onClick={() => setIsOpen(false)}>
+                <Link className="hover:bg-pumpkin-100/10 p-2 rounded-lg" to="/support" onClick={() => setIsOpen(false)}>
                   Customer Support
                 </Link>
 
-                <hr />
+                <Link className="hover:bg-pumpkin-100/10 p-2 rounded-lg" to="/register" onClick={() => setIsOpen(false)}>
+                  Register
+                </Link>
+                <hr className="text-gray-300" />
 
                 {/* Auth Section */}
                 {!user && (
                   <Link
                     to="/login"
                     onClick={() => setIsOpen(false)}
-                    className="bg-charcoal text-white text-center py-2 rounded-xl"
+                    className="bg-charcoal text-white text-center py-2 rounded-xl hover:bg-pumpkin-50 transition"
                   >
                     Login
                   </Link>
