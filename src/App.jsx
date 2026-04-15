@@ -28,35 +28,22 @@ import NotFound from "./pages/fallback/NotFound";
 import AboutUsPage from "./pages/publicPages/AboutUsPage";
 import SupportPage from "./pages/publicPages/SupportPage";
 import DealsPage from "./pages/publicPages/DealsPage";
+import PublicRoutes from "./routes/PublicRoutes";
 
 const App = () => {
+
+
+
   return (
     <Router>
       <Routes>
 
         {/* Public Routes Layout */}
-        <Route element={<PublicLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/search" element={<FlightSearch />} />
-          <Route path="/aboutUs" element={<AboutUsPage/>}/>
-          <Route path="/support" element={<SupportPage />} />
-          <Route path="/flights/:flightId/seats" element={<SeatSelection />} />
-          <Route path="/deals" element={<DealsPage />} />
-        <Route path="/booking" element={<Booking />} />
-        </Route>
+        <Route path="/*" element={<PublicRoutes />}/>
 
         {/* Auth User Routes Layout */}
         <Route path="/user/*" element={<UserRoutes />} />
-        {/* <Route element={<UserLayout />}>
-          <Route path="/payment/:bookingId" element={<Payment />} />
-          <Route path="/my-bookings" element={<MyBookings />} />
-        </Route> */}
-        {/* <Route path="/payment/:bookingId" element={<Payment />} />
-        <Route path="/my-bookings" element={<MyBookings />} /> */}
-
-
+    
         {/* Staff Routes Layout  */}
 
         {/* Admin Routes */}

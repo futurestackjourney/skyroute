@@ -189,11 +189,12 @@ const FlightSearch = () => {
 
   return (
     <>
-      <div className="padding-x py-12 sm:py-22 max-w-7xl mx-auto ">
+      <div className="padding-x py-12 sm:py-22 max-w-7xl mx-auto bg-car">
         <div className="min-h-screen 2xl:bg-white p-6 rounded-4xl">
           <h1 className="text-3xl font-semibold mb-4 text-primary ">
             Search Flights
           </h1>
+        <div className="hero-blob-l" />
 
           <div className="flex gap-4 my-2">
             <button className="bg-pumpkin text-white p-2 sm:p-3 rounded-full text-sm font-semibold hover:bg-pumpkin-100 cursor-pointer">

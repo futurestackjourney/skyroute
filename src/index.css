@@ -1038,8 +1038,8 @@ html {
 }
 .search-input {
   width: 100%;
-  padding: 1.1rem 1.5rem 1.1rem 3.2rem;
-  border-radius: 100px;
+  padding: 1.1rem 1.5rem 1.1rem 1.1rem;
+  /* border-radius: 100px; */
   border: none;
   font-family: "DM Sans", sans-serif;
   font-size: 1rem;
@@ -1793,7 +1793,7 @@ html {
   }
   .hero-ticker-tape {
     position: absolute; 
-    top: 72px; 
+    top: 75px; 
     left: 0; 
     right: 0;
     background: var(--color-pumpkin); 
@@ -1877,7 +1877,7 @@ html {
 
   .hero-title {
     /* font-family: 'Playfair Display', serif; */
-    font-size: clamp(3rem, 7vw, 5.5rem); 
+    font-size: clamp(3rem, 7vw, 4.5rem); 
     font-weight: 900;
     letter-spacing: -.03em; 
     line-height: 1.04; 
@@ -1922,7 +1922,7 @@ html {
     min-width: 60px;
   }
   .countdown-num {
-    font-family: 'Playfair Display', serif;
+    /* font-family: 'Playfair Display', serif; */
     font-size: 1.6rem; 
     font-weight: 900; 
     line-height: 1; 
@@ -1997,7 +1997,7 @@ html {
     display: block;
   }
   .section-title {
-    font-family: 'Playfair Display', serif;
+    /* font-family: 'Playfair Display', serif; */
     font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 900;
     letter-spacing: -.02em; color: var(--color-charcoal); margin-bottom: 2rem;
   }
@@ -2021,7 +2021,7 @@ html {
     padding: .3rem .9rem; border-radius: 100px; width: fit-content;
   }
   .featured-title {
-    font-family: 'Playfair Display', serif;
+    /* font-family: 'Playfair Display', serif; */
     font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 900;
     color: #fff; line-height: 1.1; margin: 1rem 0 .5rem;
   }
@@ -2029,7 +2029,7 @@ html {
   .featured-price-row { display: flex; align-items: baseline; gap: .75rem; margin-top: 1rem; }
   .featured-was { text-decoration: line-through; color: rgba(255,255,255,.35); font-size: 1rem; }
   .featured-now {
-    font-family: 'Playfair Display', serif;
+    /* font-family: 'Playfair Display', serif; */
     font-size: 2.8rem; font-weight: 900; color: var(--color-pumpkin); line-height: 1;
   }
   .featured-per { color: rgba(255,255,255,.45); font-size: .8rem; }
@@ -2060,7 +2060,7 @@ html {
   }
   .dest-emoji-main { font-size: 4.5rem; display: block; margin-bottom: .5rem; }
   .dest-name-big {
-    font-family: 'Playfair Display', serif;
+    /* font-family: 'Playfair Display', serif; */
     font-size: 1.6rem; font-weight: 900; color: #fff;
   }
   .dest-tagline { font-size: .85rem; color: rgba(255,255,255,.5); margin-top: .25rem; }
@@ -2071,7 +2071,9 @@ html {
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     font-weight: 700; box-shadow: 0 8px 24px rgba(0,0,0,.2);
   }
-  .savings-pct { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; line-height: 1; }
+  .savings-pct { 
+    /* font-family: 'Playfair Display', serif;  */
+    font-size: 1.3rem; font-weight: 900; line-height: 1; }
   .savings-off { font-size: .6rem; letter-spacing: .06em; text-transform: uppercase; opacity: .85; }
 
   /* ── DEALS GRID ── */
@@ -2107,7 +2109,7 @@ html {
   }
   .deal-arrow { color: var(--color-pumpkin); font-weight: 700; }
   .deal-title {
-    font-family: 'Playfair Display', serif;
+    /* font-family: 'Playfair Display', serif; */
     font-size: 1.15rem; font-weight: 700; color: var(--color-charcoal); margin-bottom: .35rem;
   }
   .deal-meta { font-size: .8rem; color: var(--color-charcoal-100); line-height: 1.6; }
@@ -2118,7 +2120,9 @@ html {
   }
   .deal-price-wrap { display: flex; flex-direction: column; }
   .deal-was { font-size: .75rem; text-decoration: line-through; color: var(--color-charcoal-100); }
-  .deal-now { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--color-charcoal); line-height: 1; }
+  .deal-now { 
+    /* font-family: 'Playfair Display', serif;  */
+    font-size: 1.5rem; font-weight: 900; color: var(--color-charcoal); line-height: 1; }
   .deal-now-label { font-size: .7rem; color: var(--color-charcoal-100); }
   .deal-savings {
     background: oklch(85% 0.1 49 / .35); color: var(--color-charcoal);
@@ -2145,7 +2149,7 @@ html {
   .flash-inner { max-width: 1100px; margin: 0 auto; }
   .flash-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
   .flash-title {
-    font-family: 'Playfair Display', serif;
+    /* font-family: 'Playfair Display', serif; */
     font-size: 1.6rem; font-weight: 900; color: #fff;
   }
   .flash-title em { font-style: italic; color: var(--color-pumpkin); }
@@ -2171,7 +2175,7 @@ html {
   .flash-dest { font-weight: 700; font-size: .9rem; color: #fff; margin-bottom: .2rem; }
   .flash-from { font-size: .75rem; color: rgba(255,255,255,.45); margin-bottom: .75rem; }
   .flash-price {
-    font-family: 'Playfair Display', serif;
+    /* font-family: 'Playfair Display', serif; */
     font-size: 1.5rem; font-weight: 900; color: var(--color-pumpkin);
   }
   .flash-was-price { font-size: .75rem; text-decoration: line-through; color: rgba(255,255,255,.3); }
@@ -2203,7 +2207,7 @@ html {
     display: inline-block; margin-bottom: 1rem;
   }
   .promo-title {
-    font-family: 'Playfair Display', serif;
+    /* font-family: 'Playfair Display', serif; */
     font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 900; line-height: 1.15; margin-bottom: .75rem;
   }
   .promo-desc { font-size: .875rem; opacity: .75; line-height: 1.7; margin-bottom: 1.5rem; max-width: 320px; }
@@ -2230,7 +2234,7 @@ html {
   .newsletter-inner { max-width: 540px; margin: 0 auto; }
   .newsletter-icon { font-size: 2.5rem; margin-bottom: 1rem; }
   .newsletter-title {
-    font-family: 'Playfair Display', serif;
+    /* font-family: 'Playfair Display', serif; */
     font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 900;
     color: var(--color-charcoal); letter-spacing: -.02em; margin-bottom: .75rem;
   }

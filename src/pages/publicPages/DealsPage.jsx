@@ -1,17 +1,18 @@
+import { ArrowBigRightDash, MoveRight } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
 /* ─────────────────────────── STYLES ─────────────────────────── */
 /* ─────────────────────────── DATA ─────────────────────────── */
 const allDeals = [
-  { id:1, emoji:"🗼", bg:"linear-gradient(135deg,#ffecd2,#fcb69f)", city:"Paris", country:"France", from:"Karachi", was:"PKR 185,000", now:"PKR 112,000", savings:"39%", badge:"flash", badgeLabel:"Flash Sale", dates:"Jun 10 – Jun 20", seats:"8 seats left", category:"Europe" },
-  { id:2, emoji:"🏙️", bg:"linear-gradient(135deg,#e0f7fa,#b2ebf2)", city:"Dubai", country:"UAE", from:"Lahore", was:"PKR 55,000", now:"PKR 34,500", savings:"37%", badge:"limited", badgeLabel:"Limited", dates:"May 25 – Jun 5", seats:"4 seats left", category:"Middle East" },
-  { id:3, emoji:"🌸", bg:"linear-gradient(135deg,#fce4ec,#f8bbd0)", city:"Tokyo", country:"Japan", from:"Islamabad", was:"PKR 210,000", now:"PKR 138,000", savings:"34%", badge:null, badgeLabel:null, dates:"Jul 1 – Jul 15", seats:"12 seats left", category:"Asia" },
-  { id:4, emoji:"🗽", bg:"linear-gradient(135deg,#e8f5e9,#c8e6c9)", city:"New York", country:"USA", from:"Karachi", was:"PKR 275,000", now:"PKR 189,000", savings:"31%", badge:"flash", badgeLabel:"Flash Sale", dates:"Aug 3 – Aug 14", seats:"6 seats left", category:"Americas" },
-  { id:5, emoji:"🏛️", bg:"linear-gradient(135deg,#fff8e1,#ffecb3)", city:"Rome", country:"Italy", from:"Lahore", was:"PKR 165,000", now:"PKR 110,000", savings:"33%", badge:null, badgeLabel:null, dates:"Sep 5 – Sep 18", seats:"15 seats left", category:"Europe" },
-  { id:6, emoji:"🦁", bg:"linear-gradient(135deg,#f3e5f5,#e1bee7)", city:"Nairobi", country:"Kenya", from:"Karachi", was:"PKR 145,000", now:"PKR 98,000", savings:"32%", badge:"limited", badgeLabel:"Limited", dates:"Oct 10 – Oct 22", seats:"3 seats left", category:"Africa" },
-  { id:7, emoji:"🕌", bg:"linear-gradient(135deg,#fff3e0,#ffe0b2)", city:"Istanbul", country:"Turkey", from:"Islamabad", was:"PKR 120,000", now:"PKR 79,000", savings:"34%", badge:null, badgeLabel:null, dates:"Jun 18 – Jun 28", seats:"10 seats left", category:"Middle East" },
-  { id:8, emoji:"🏝️", bg:"linear-gradient(135deg,#e0f2f1,#b2dfdb)", city:"Bali", country:"Indonesia", from:"Karachi", was:"PKR 175,000", now:"PKR 120,000", savings:"31%", badge:"flash", badgeLabel:"Flash Sale", dates:"Jul 20 – Aug 2", seats:"7 seats left", category:"Asia" },
-  { id:9, emoji:"🎭", bg:"linear-gradient(135deg,#e8eaf6,#c5cae9)", city:"London", country:"UK", from:"Lahore", was:"PKR 230,000", now:"PKR 159,000", savings:"31%", badge:null, badgeLabel:null, dates:"May 30 – Jun 12", seats:"11 seats left", category:"Europe" },
+  { id:1, emoji:"https://images.pexels.com/photos/30892607/pexels-photo-30892607.jpeg", bg:"linear-gradient(135deg,#ffecd2,#fcb69f)", city:"Paris", country:"France", from:"Karachi", was:"PKR 185,000", now:"PKR 112,000", savings:"39%", badge:"flash", badgeLabel:"Flash Sale", dates:"Jun 10 – Jun 20", seats:"8 seats left", category:"Europe" },
+  { id:2, emoji:"https://images.pexels.com/photos/35155683/pexels-photo-35155683.jpeg", bg:"linear-gradient(135deg,#e0f7fa,#b2ebf2)", city:"Dubai", country:"UAE", from:"Lahore", was:"PKR 55,000", now:"PKR 34,500", savings:"37%", badge:"limited", badgeLabel:"Limited", dates:"May 25 – Jun 5", seats:"4 seats left", category:"Middle East" },
+  { id:3, emoji:"https://images.pexels.com/photos/5860950/pexels-photo-5860950.jpeg", bg:"linear-gradient(135deg,#fce4ec,#f8bbd0)", city:"Tokyo", country:"Japan", from:"Islamabad", was:"PKR 210,000", now:"PKR 138,000", savings:"34%", badge:null, badgeLabel:null, dates:"Jul 1 – Jul 15", seats:"12 seats left", category:"Asia" },
+  { id:4, emoji:"https://images.pexels.com/photos/6007455/pexels-photo-6007455.jpeg", bg:"linear-gradient(135deg,#e8f5e9,#c8e6c9)", city:"New York", country:"USA", from:"Karachi", was:"PKR 275,000", now:"PKR 189,000", savings:"31%", badge:"flash", badgeLabel:"Flash Sale", dates:"Aug 3 – Aug 14", seats:"6 seats left", category:"Americas" },
+  { id:5, emoji:"https://images.pexels.com/photos/36776885/pexels-photo-36776885.jpeg", bg:"linear-gradient(135deg,#fff8e1,#ffecb3)", city:"Rome", country:"Italy", from:"Lahore", was:"PKR 165,000", now:"PKR 110,000", savings:"33%", badge:null, badgeLabel:null, dates:"Sep 5 – Sep 18", seats:"15 seats left", category:"Europe" },
+  { id:6, emoji:"https://images.pexels.com/photos/36243880/pexels-photo-36243880.jpeg", bg:"linear-gradient(135deg,#f3e5f5,#e1bee7)", city:"Nairobi", country:"Kenya", from:"Karachi", was:"PKR 145,000", now:"PKR 98,000", savings:"32%", badge:"limited", badgeLabel:"Limited", dates:"Oct 10 – Oct 22", seats:"3 seats left", category:"Africa" },
+  { id:7, emoji:"https://images.pexels.com/photos/17567635/pexels-photo-17567635.jpeg", bg:"linear-gradient(135deg,#fff3e0,#ffe0b2)", city:"Istanbul", country:"Turkey", from:"Islamabad", was:"PKR 120,000", now:"PKR 79,000", savings:"34%", badge:null, badgeLabel:null, dates:"Jun 18 – Jun 28", seats:"10 seats left", category:"Middle East" },
+  { id:8, emoji:"https://images.pexels.com/photos/25328674/pexels-photo-25328674.jpeg", bg:"linear-gradient(135deg,#e0f2f1,#b2dfdb)", city:"Bali", country:"Indonesia", from:"Karachi", was:"PKR 175,000", now:"PKR 120,000", savings:"31%", badge:"flash", badgeLabel:"Flash Sale", dates:"Jul 20 – Aug 2", seats:"7 seats left", category:"Asia" },
+  { id:9, emoji:"https://images.pexels.com/photos/15283254/pexels-photo-15283254.jpeg", bg:"linear-gradient(135deg,#e8eaf6,#c5cae9)", city:"London", country:"UK", from:"Lahore", was:"PKR 230,000", now:"PKR 159,000", savings:"31%", badge:null, badgeLabel:null, dates:"May 30 – Jun 12", seats:"11 seats left", category:"Europe" },
 ];
 
 const flashSales = [
@@ -203,7 +204,7 @@ export default function DealsPage() {
             {sortedDeals.map((d, i) => (
               <div key={d.id} className={`deal-card reveal reveal-delay-${(i % 3) + 1}`}>
                 <div className="deal-visual" style={{ background: d.bg }}>
-                  <span className="deal-visual-emoji">{d.emoji}</span>
+                  <span className="deal-visual-emoji"><img src={d.emoji} alt="" /></span>
                   {d.badge && <span className={`deal-badge ${d.badge}`}>{d.badgeLabel}</span>}
                 </div>
                 <div className="deal-body">
@@ -222,7 +223,7 @@ export default function DealsPage() {
                     </div>
                     <div style={{ display:"flex", flexDirection:"column", alignItems:"flex-end", gap:".5rem" }}>
                       <span className="deal-savings">Save {d.savings}</span>
-                      <button className="deal-book-btn" onClick={() => handleBook(d.city)}>Book →</button>
+                      <button className="deal-book-btn flex items-center gap-1" onClick={() => handleBook(d.city)}>Book <ArrowBigRightDash size={20}/></button>
                     </div>
                   </div>
                 </div>

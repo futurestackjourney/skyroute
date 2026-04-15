@@ -568,45 +568,45 @@ const Home = () => {
         </div>
       </div>
 
-      <section>
-        <div className="padding-x h-max my-10">
-          <div className="mb-10">
-            <h1 ref={headingRef} className="text-charcoal text-4xl mb-1">
-              Popular Destinations
-            </h1>
-            <p className="text-base text-charcoal-100">
-              Discover the most loved travel spots around the world
-            </p>
-          </div>
-          <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
-            {Popular.map((pop, key) => (
-              <div
-                // ref={(el) => (gcardsRef.current[key] = el)}
-                ref={addToRefs}
-                key={key}
-                className="overflow-hidden w-full sm:h-80 relative"
-              >
-                <img
-                  src={pop.image}
-                  alt=""
-                  className="w-full h-full object-cover rounded-2xl"
-                  loading="lazy"
-                />
-                <div className="absolute z-10 bottom-6 px-2 text-zinc-200">
-                  <h3 className="text-lg font-semibold">{pop.title}</h3>
-                  <p className="text-sm">{pop.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Popular Destinations Section */}
       {/* {sectionLoading ? (
         <SectionSkeleton type="card" count={3} />
-      ) : (
-      )} */}
-      {/* Popular Destinations Section */}
-      <section></section>
+        ) : (
+          )} */}
+          <section>
+            <div className="padding-x h-max my-10">
+              <div className="mb-10">
+                <h1 ref={headingRef} className="text-charcoal text-4xl mb-1">
+                  Popular Destinations
+                </h1>
+                <p className="text-base text-charcoal-100">
+                  Discover the most loved travel spots around the world
+                </p>
+              </div>
+              <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
+                {Popular.map((pop, key) => (
+                  <div
+                    // ref={(el) => (gcardsRef.current[key] = el)}
+                    ref={addToRefs}
+                    key={key}
+                    className="overflow-hidden w-full sm:h-80 relative"
+                  >
+                    <img
+                      src={pop.image}
+                      alt=""
+                      className="w-full h-full object-cover rounded-2xl"
+                      loading="lazy"
+                    />
+                    <div className="absolute z-10 bottom-6 px-2 text-zinc-200">
+                      <h3 className="text-lg font-semibold">{pop.title}</h3>
+                      <p className="text-sm">{pop.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
 
       {/* Comfort & Experience Section */}
       <section>

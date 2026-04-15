@@ -17,7 +17,8 @@
 // export default api;
 import axios from "axios";
 
-const API_URL = "https://skyroute.runasp.net/api"; // Update with your actual backend URL
+// const API_URL = "https://localhost:7042/api";
+const API_URL = "https://skyroute.runasp.net/api";
 
 const api = axios.create({
   baseURL: API_URL,

@@ -78,7 +78,7 @@ const SectionSkeleton = ({ type = "grid", count = 4 }) => {
         </div>
       )}
 
-   {type === "image" && (
+      {type === "image" && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Array(count)
             .fill(0)
@@ -90,6 +90,13 @@ const SectionSkeleton = ({ type = "grid", count = 4 }) => {
             ))}
         </div>
         // <div  className="w-full h-40 bg-gray-300 animate-pulse rounded-2xl"/>
+      )}
+
+      {type === "publiclayout" && (
+        <div className="flex flex-col space-y-4 h-screen">
+          <div>Navbar</div>
+          <div>Home</div>
+        </div>
       )}
     </section>
   );

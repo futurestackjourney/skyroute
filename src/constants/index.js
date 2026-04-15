@@ -91,21 +91,26 @@ const works = [
 const deals = [
   {
     image:
-      "/images/breathtaking-shot-colosseum-amphitheatre-located-rome-italy.jpg",
+      // "/images/breathtaking-shot-colosseum-amphitheatre-located-rome-italy.jpg",
+      "https://images.pexels.com/photos/32199907/pexels-photo-32199907.jpeg",
     title: "European City Explorer",
     desc: "Flight + 5 Nights Hotel",
     price: "$550 - 799",
     url: "",
   },
   {
-    image: "/images/beautiful-diamond-beach-penida-island-bali-indonesia.jpg",
+    image: 
+    // "/images/beautiful-diamond-beach-penida-island-bali-indonesia.jpg",
+    "https://images.pexels.com/photos/36137288/pexels-photo-36137288.jpeg",
     title: "Summer Getaway to bali",
     desc: "Flight + 5 Nights Hotel",
     price: "$1200 - 799",
     url: "",
   },
   {
-    image: "/images/camping-milky-way-serene-adventure-generated-by-ai.jpg",
+    image: 
+    // "/images/camping-milky-way-serene-adventure-generated-by-ai.jpg",
+    "https://images.pexels.com/photos/32543650/pexels-photo-32543650.jpeg",
     title: "Desert Adventure Dubai",
     desc: "Flight + 5 Nights Hotel + Desert Safari",
     price: "$450 - 680",
