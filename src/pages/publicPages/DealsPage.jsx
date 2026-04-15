@@ -94,7 +94,7 @@ export default function DealsPage() {
       {/* HERO */}
       <section className="deals-hero">
         {/* ticker tape */}
-        <div className="hero-ticker-tape">
+        <div className="hero-ticker-tape top-15 sm:top-20">
           <div className="ticker-track">
             {[...Array(2)].map((_, ti) =>
               ["✈ KARACHI → PARIS  –39%","✈ LAHORE → DUBAI  –37%","✈ ISLAMABAD → TOKYO  –34%","✈ KARACHI → NEW YORK  –31%","✈ LAHORE → ROME  –33%","✈ KARACHI → BALI  –31%"].map((t, i) => (

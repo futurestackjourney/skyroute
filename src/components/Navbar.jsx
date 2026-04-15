@@ -62,7 +62,7 @@ const Navbar = () => {
             ${isOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
         onClick={() => setIsOpen(false)}
       />
-      <header className="md:px-10 md:my-3 w-full  mx-auto absolute z-10">
+      <header className="md:px-10 md:my-3 w-full mx-auto absolute z-10">
         {/* <div className="">
         
       </div> */}

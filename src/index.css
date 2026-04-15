@@ -14,7 +14,7 @@ html {
   background: #f7f9fb;
   color: oklch(34.591% 0.04142 235.083);
   font-family: "SN Pro", sans-serif;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
 }
 
 @theme {
@@ -1793,7 +1793,7 @@ html {
   }
   .hero-ticker-tape {
     position: absolute; 
-    top: 75px; 
+    /* top: 75px;  */
     left: 0; 
     right: 0;
     background: var(--color-pumpkin); 
@@ -2238,23 +2238,46 @@ html {
     font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 900;
     color: var(--color-charcoal); letter-spacing: -.02em; margin-bottom: .75rem;
   }
-  .newsletter-title em { font-style: italic; color: var(--color-pumpkin); }
-  .newsletter-sub { font-size: .95rem; color: var(--color-charcoal-100); line-height: 1.75; margin-bottom: 2rem; }
+  .newsletter-title em { 
+    font-style: italic; 
+    color: var(--color-pumpkin); 
+  }
+  .newsletter-sub { 
+    font-size: .95rem; 
+    color: var(--color-charcoal-100); 
+    line-height: 1.75; 
+    margin-bottom: 2rem; 
+  }
   .newsletter-form {
-    display: flex; gap: .5rem; background: #fff;
-    border: 1.5px solid rgba(0,0,0,.08); border-radius: 100px; padding: .35rem .35rem .35rem 1.4rem;
+    display: flex; 
+    gap: .5rem; 
+    background: #fff;
+    border: 1.5px solid rgba(0,0,0,.08); 
+    border-radius: 100px; 
+    padding: .35rem .35rem .35rem 1.4rem;
     box-shadow: 0 8px 30px rgba(0,0,0,.07);
   }
   .newsletter-input {
-    flex: 1; border: none; outline: none;
-    font-family: 'DM Sans', sans-serif; font-size: .9rem; color: var(--color-charcoal);
+    flex: 1; 
+    border: none; 
+    outline: none;
+    font-family: 'DM Sans', sans-serif; 
+    font-size: .9rem; 
+    color: var(--color-charcoal);
     background: transparent;
   }
   .newsletter-btn {
-    background: var(--color-pumpkin); color: #fff; border: none; cursor: pointer;
-    border-radius: 100px; padding: .75rem 1.5rem;
-    font-family: 'DM Sans', sans-serif; font-size: .875rem; font-weight: 700;
-    transition: background .2s, transform .15s; white-space: nowrap;
+    background: var(--color-pumpkin); 
+    color: #fff; 
+    border: none; 
+    cursor: pointer;
+    border-radius: 100px; 
+    padding: .75rem 1.5rem;
+    font-family: 'DM Sans', sans-serif; 
+    font-size: .875rem; 
+    font-weight: 700;
+    transition: background .2s, transform .15s; 
+    white-space: nowrap;
   }
   .newsletter-btn:hover { background: var(--color-pumpkin-50); transform: scale(1.02); }
   .newsletter-fine { font-size: .75rem; color: var(--color-charcoal-100); margin-top: 1rem; }
