@@ -1,24 +1,7 @@
-// import axios from "axios";
-
-// // const API_URL = "http://localhost:5000/api"; // backend URL
-// const API_URL = "https://localhost:7042/api";
-
-// const api = axios.create({
-//   baseURL: API_URL,
-// });
-
-// // Add JWT token to headers if exists
-// api.interceptors.request.use((config) => {
-//   const token = localStorage.getItem("token");
-//   if (token) config.headers.Authorization = `Bearer ${token}`;
-//   return config;
-// });
-
-// export default api;
 import axios from "axios";
 
-// const API_URL = "https://localhost:7042/api";
-const API_URL = "https://skyroute.runasp.net/api";
+const API_URL = "https://localhost:7042/api";
+// const API_URL = "https://skyroute.runasp.net/api";
 
 const api = axios.create({
   baseURL: API_URL,

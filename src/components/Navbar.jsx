@@ -107,16 +107,16 @@ const Navbar = () => {
                       Deals
                     </NavLink>
                   </li>
-                  {/* <li>
+                   <li>
                     <NavLink
                       className={({ isActive }) =>
                         `px-4 py-3 rounded-3xl ${isActive ? "bg-charcoal text-white" : "bg-black/10"}`
                       }
-                      to="/Register"
+                      to="/hotels"
                     >
-                      Register
+                      Hotels
                     </NavLink>
-                  </li> */}
+                  </li> 
                   <li>
                     <NavLink
                       className={({ isActive }) =>

@@ -17,6 +17,7 @@ import Flight from "../pages/admin/Flight";
 import AdminComplaints from "../pages/admin/AdminComplaints ";
 import AdminBookings from "../pages/admin/AdminBookings";
 import { BookingPage } from "../pages/admin/Booking";
+import AdminHotels from "../pages/admin/AdminHotels";
 
 const AdminRoutes = () => {
   return (
@@ -46,6 +47,8 @@ const AdminRoutes = () => {
         {/* Booking Routes */}
         <Route path="bookings" element={<AdminBookings/>}/>
         {/* <Route path="bookings" element={<BookingPage/>}/> */}
+        {/* Hotel Routes */}
+        <Route path="hotels" element={<AdminHotels/>}/>
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>

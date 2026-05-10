@@ -197,13 +197,13 @@ const FlightSearch = () => {
         <div className="hero-blob-l" />
 
           <div className="flex gap-4 my-2">
-            <button className="bg-pumpkin text-white p-2 sm:p-3 rounded-full text-sm font-semibold hover:bg-pumpkin-100 cursor-pointer">
+            <button className="bg-pumpkin text-white p-2 sm:p-3 rounded-full text-sm font-semibold hover:bg-[#ff6955] cursor-pointer">
               One Way
             </button>
-            <button className="bg-pumpkin text-white p-2 sm:p-3 rounded-full text-sm font-semibold hover:bg-pumpkin-100 cursor-pointer">
+            <button className="bg-pumpkin text-white p-2 sm:p-3 rounded-full text-sm font-semibold hover:bg-[#ff6955] cursor-pointer">
               Rounded
             </button>
-            <button className="bg-pumpkin text-white p-2 sm:p-3 rounded-full text-sm font-semibold hover:bg-pumpkin-100 cursor-pointer">
+            <button className="bg-pumpkin text-white p-2 sm:p-3 rounded-full text-sm font-semibold hover:bg-[#ff6955] cursor-pointer">
               Multi City
             </button>
           </div>

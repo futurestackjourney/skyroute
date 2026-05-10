@@ -24,7 +24,7 @@ const Flight = () => {
 
   // Fetch Todays Flights
   const [flight, setFlight] = useState([]);
-  const [table, setTable] = useState(1);
+  const [table, setTable] = useState(2);
 
   // PAGINATION PAGES & SIZES
   // const totalPages = Math.ceil(totalItems / size);
@@ -1316,7 +1316,7 @@ const submitSeats = async () => {
               <div className="flex justify-end gap-4">
                 <button
                   onClick={() => setShowEdit(false)}
-                  className="px-3 py-2 bg-gray-300 text-charcoal rounded "
+                  className="px-3 py-2 bg-gray-300 text-charcoal rounded"
                 >
                   Cancel
                 </button>

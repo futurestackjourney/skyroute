@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
-import { useState, useRef, useEffect,useContext } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import LogoutButton from "../components/ui/LogoutButton";
 import { AuthContext } from "../context/AuthContext";
 
@@ -26,16 +26,20 @@ import {
   CalendarCheck,
   Info,
   Mail,
+  Hotel,
+  List,
 } from "lucide-react";
 
 const DashboardLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [aircraftOpen, setAircraftOpen] = useState(false);
   const [flightsOpen, setFlightsOpen] = useState(false);
+  const [hotelsOpen, setHotelsOpen] = useState(false);
+  const [dashboard, setDashboard] = useState(true);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const profileRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
-    const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -73,12 +77,8 @@ const DashboardLayout = () => {
           className={`h-screen sticky  top-0 left-0 shadow-sm overflow-hidden z-10 bg-[#f1f1f1] text-charcoal font-semibold font-lg transition-all duration-300 text-sm 
         ${collapsed ? "w-20" : "w-64"}`}
         >
-                    <div className="p-4">
-            {/* {!collapsed && (
-              <h1 className="sm:text-2xl font-bold text-charcoal mb-2">
-                Profile
-              </h1>
-            )} */}
+
+          <div className="p-4">
             <div className="flex items-center gap-2">
               <div className="w-10 h-10 rounded-full overflow-hidden object-fill">
                 {user.image ? (
@@ -100,9 +100,7 @@ const DashboardLayout = () => {
             </div>
           </div>
           <div className="p-4 flex justify-between items-center">
-            {!collapsed && (
-                <img src="/images/logo.png" width={80} alt="" />
-            )}
+            {!collapsed && <img src="/images/logo.png" width={80} alt="" />}
             <button
               onClick={() => setCollapsed(!collapsed)}
               className={`text-pumpkin-50 transition ${collapsed ? "rotate-180" : "rotate-0"}`}
@@ -118,20 +116,14 @@ const DashboardLayout = () => {
             >
               <LayoutGrid className="text-pumpkin" /> {!collapsed && "Home"}
             </Link>
-
-            {/* <Link
-              to="analytics"
-              className="flex gap-2 p-2 rounded hover:bg-charcoal-100 hover:text-creame"
-            >
-              <ChartColumnDecreasing className="text-pumpkin" />{" "}
-              {!collapsed && "Analytics"}
-            </Link> */}
+            
             <Link
               to="users"
               className="flex gap-2 p-2 rounded hover:bg-charcoal-100 hover:text-creame"
             >
               <UserRound className="text-pumpkin" /> {!collapsed && "Users"}
             </Link>
+            
             {/* Flights Dropdown */}
             <div>
               {/* Main Button */}
@@ -251,19 +243,66 @@ const DashboardLayout = () => {
                 </div>
               </div>
             </div>
-            <Link
-              to="complaints"
-              className="flex gap-2 p-2 rounded hover:bg-charcoal-100 hover:text-creame"
-            >
-              <FileExclamationPoint className="text-pumpkin" />{" "}
-              {!collapsed && "Complaints"}
-            </Link>
+
+            {/* Hotels Booking */}
+            <div>
+              {/* Main Button */}
+              <button
+                onClick={() => setHotelsOpen(!hotelsOpen)}
+                className="flex items-center justify-between w-full gap-2 p-2 rounded hover:bg-charcoal-100 hover:text-creame"
+              >
+                <Link to="hotels" className="flex items-center gap-2">
+                  <Hotel className="text-pumpkin" />
+                  {!collapsed && "Hotels"}
+                </Link>
+
+                {/* Arrow */}
+                {!collapsed && (
+                  <span
+                    className={`transition-transform ease-linear ${
+                      hotelsOpen ? "rotate-180" : ""
+                    }`}
+                  >
+                    {hotelsOpen ? (
+                      <Minus className="size-5" />
+                    ) : (
+                      <Plus className="size-5" />
+                    )}
+                  </span>
+                )}
+              </button>
+              {/* Dropdown Items */}
+              <div
+                className={`
+                            overflow-hidden transition-all duration-300 ease-in-out
+                            ${hotelsOpen && !collapsed ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}
+                          `}
+              >
+                <div className="bg-white rounded mt-1">
+                  <Link
+                    to="hotelsbooking"
+                    className="flex gap-2 p-2 rounded hover:bg-charcoal-100 hover:text-creame text-sm"
+                  >
+                    <List className="size-4" /> Hotels Booking
+                  </Link>
+                </div>
+              </div>
+            </div>
+
             <Link
               to="bookings"
               className="flex gap-2 p-2 rounded hover:bg-charcoal-100 hover:text-creame"
             >
               <CalendarCheck className="text-pumpkin" />{" "}
               {!collapsed && "Bookings"}
+            </Link>
+
+            <Link
+              to="complaints"
+              className="flex gap-2 p-2 rounded hover:bg-charcoal-100 hover:text-creame"
+            >
+              <FileExclamationPoint className="text-pumpkin" />{" "}
+              {!collapsed && "Complaints"}
             </Link>
 
             <div className="bg-[#f1f1f1] z-20 absolute bottom-0 py-4 w-full border-t border-[#d9d9d9]">
@@ -293,7 +332,7 @@ const DashboardLayout = () => {
               <div className="flex items-center gap-4">
                 <div>
                   <button className="flex items-center gap-2 text-sm text-creame">
-                   Notification
+                    Notification
                     <Bell />
                   </button>
                 </div>

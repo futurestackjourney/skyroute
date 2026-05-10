@@ -14,7 +14,7 @@ html {
   background: #f7f9fb;
   color: oklch(34.591% 0.04142 235.083);
   font-family: "SN Pro", sans-serif;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 @theme {
@@ -31,6 +31,13 @@ html {
   --color-muted: oklch(55.439% 0.04078 257.446);
   --color-accent: oklch(76.858% 0.1646 70.075);
   --color-creame: #f5f5f5;
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @layer components {
@@ -2048,17 +2055,22 @@ html {
     background: linear-gradient(135deg, oklch(55% 0.06 235 / .3), oklch(73% 0.17 49 / .2));
   }
   .dest-emoji-bg {
-    font-size: 9rem; opacity: .18; position: absolute;
+    font-size: 9rem; 
+    opacity: .28; 
+    position: absolute;
     animation: emojiFLoat 7s ease-in-out infinite;
   }
-  @keyframes emojiFLoat {
-    0%,100% { transform: translateY(0) rotate(-5deg); }
-    50% { transform: translateY(-12px) rotate(3deg); }
-  }
+  /* @keyframes emojiFLoat {
+    0%,100% { transform: translateY(0) rotate(-1deg); }
+    50% { transform: translateY(-8px) rotate(1deg); }
+  } */
   .dest-info-float {
     position: relative; z-index: 1; text-align: center;
   }
-  .dest-emoji-main { font-size: 4.5rem; display: block; margin-bottom: .5rem; }
+  .dest-emoji-main { 
+    font-size: 4.5rem; 
+    display: block; 
+    margin-bottom: .5rem; }
   .dest-name-big {
     /* font-family: 'Playfair Display', serif; */
     font-size: 1.6rem; font-weight: 900; color: #fff;

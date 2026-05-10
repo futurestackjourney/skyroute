@@ -10,6 +10,7 @@ import AboutUsPage from "../pages/publicPages/AboutUsPage";
 import SupportPage from "../pages/publicPages/SupportPage";
 import DealsPage from "../pages/publicPages/DealsPage";
 import NotFound from "../pages/fallback/NotFound";
+import Hotels from "../pages/Hotels";
 
 const PublicRoutes = () => {
   return (
@@ -26,6 +27,10 @@ const PublicRoutes = () => {
         {/* Flights */}
         <Route path="search" element={<FlightSearch />} />
         <Route path="flights/:flightId/seats" element={<SeatSelection />} />
+
+        {/* Hotels */}
+        <Route path="hotels" element={<Hotels />} />
+        {/* <Route path="hotels/:hotelId" element={<HotelSearch />} /> */}
 
         {/* Booking */}
         <Route path="booking" element={<Booking />} />

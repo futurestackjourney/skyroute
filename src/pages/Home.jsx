@@ -1,7 +1,7 @@
 import { ArrowRight, Cog, Search, Star } from "lucide-react";
 import { useState, useRef, useEffect, use } from "react";
 import api from "../api/api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Popular, features, works, deals, testimonials } from "../constants";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -651,7 +651,7 @@ const Home = () => {
               >
                 <img
                   ref={cardRef}
-                  src="/images/woman-sleeping-airplane.jpg"
+                  src="/images/51147.jpg"
                   alt=""
                   className="rounded-3xl h-full w-full object-cover"
                 />
@@ -845,7 +845,7 @@ const Home = () => {
                 <div
                   ref={addToRefs}
                   key={key}
-                  className="px-6 py-4  rounded-xl flex gap-4 md:flex-row md:max-h-100"
+                  className="rounded-xl flex gap-4 md:flex-row md:max-h-100"
                 >
                   {/* SVG Clip Path */}
                   <svg width="0" height="0" className="absolute">
@@ -897,17 +897,17 @@ const Home = () => {
                       {deal.price}
                     </h4>
                     {/* <h3>$220</h3> */}
-                    <button className="py-2 px-4 bg-charcoal text-creame rounded-xl">
-                      Book now
+                    <button className="deal-book-btn">
+                      Book Now
                     </button>
                   </div>
                 </div>
               ))}
             </div>
             <div className="flex justify-center mt-8">
-              <button className="py-3 px-6 border-2 border-charcoal text-charcoal rounded-2xl hover:text-creame hover:bg-charcoal transition-colors">
+              <Link to="/deals" className="py-3 px-6 border-2 border-charcoal text-charcoal rounded-2xl hover:text-creame hover:bg-charcoal transition-colors">
                 View All Deals
-              </button>
+              </Link>
             </div>
           </div>
         </div>
